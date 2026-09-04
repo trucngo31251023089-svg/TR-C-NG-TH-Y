@@ -1,0 +1,11 @@
+{
+  "name": "Remix LumiCal Phygital Atelier",
+  "description": "Ứng dụng thiết kế lịch để bàn và treo tường thông minh kết hợp quét WebAR xem video kỷ niệm gia đình và người thân.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
