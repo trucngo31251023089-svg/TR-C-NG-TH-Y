@@ -11,9 +11,9 @@ import { Footer } from './components/Footer';
 import { E2EEVaultModal } from './components/E2EEVaultModal';
 import { AtelierAccountModal } from './components/AtelierAccountModal';
 import { HomeScreen } from './screens/HomeScreen';
+import { AboutUsScreen } from './screens/AboutUsScreen';
 import { WebARScannerScreen } from './screens/WebARScannerScreen';
 import { CollaborativePortalScreen } from './screens/CollaborativePortalScreen';
-import { AdminPrintScreen } from './screens/AdminPrintScreen';
 import { CheckoutScreen } from './screens/CheckoutScreen';
 import { DesignStudioScreen } from './screens/DesignStudioScreen';
 
@@ -56,8 +56,8 @@ export default function App() {
             <CollaborativePortalScreen onNavigate={(screen) => setCurrentScreen(screen)} />
           )}
 
-          {currentScreen === 'admin-and-print' && (
-            <AdminPrintScreen onNavigate={(screen) => setCurrentScreen(screen)} />
+          {currentScreen === 'about-us' && (
+            <AboutUsScreen onNavigate={(screen) => setCurrentScreen(screen)} />
           )}
 
           {currentScreen === 'checkout' && (

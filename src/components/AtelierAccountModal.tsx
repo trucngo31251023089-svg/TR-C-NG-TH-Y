@@ -246,7 +246,7 @@ export const AtelierAccountModal: React.FC<AtelierAccountModalProps> = ({
                 <button
                   onClick={() => {
                     onClose();
-                    onNavigate('admin-and-print');
+                    onNavigate('design-studio');
                   }}
                   className="px-3.5 py-2 bg-surface-container-high hover:bg-surface-bright text-primary text-[11px] font-mono rounded-lg uppercase tracking-wider transition-colors flex items-center gap-1.5"
                 >

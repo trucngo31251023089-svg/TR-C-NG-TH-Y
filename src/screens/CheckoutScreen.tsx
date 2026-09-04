@@ -565,7 +565,7 @@ export const CheckoutScreen: React.FC<CheckoutScreenProps> = ({ onNavigate }) =>
 
                   <div className="flex flex-wrap gap-3 pt-2">
                     <button
-                      onClick={() => onNavigate('admin-and-print')}
+                      onClick={() => onNavigate('design-studio')}
                       className="px-4 py-2.5 bg-emerald-800 text-emerald-100 rounded-lg text-xs font-mono uppercase tracking-wider hover:bg-emerald-700 transition-colors flex items-center gap-1.5"
                     >
                       <span>Theo Dõi Tiến Trình Tại Xưởng</span>

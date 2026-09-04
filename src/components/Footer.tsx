@@ -34,13 +34,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenVault }) => {
             </span>
             <ul className="space-y-2 font-body-sm text-xs text-on-surface-variant">
               <li 
-                onClick={() => onNavigate && onNavigate('admin-and-print')}
+                onClick={() => onNavigate && onNavigate('about-us')}
                 className="hover:text-primary transition-colors cursor-pointer flex items-center gap-1.5"
               >
                 <span className="text-secondary text-[10px]">✦</span> Giấy Mỹ Thuật Cotton Museum Grade
               </li>
               <li 
-                onClick={() => onNavigate && onNavigate('admin-and-print')}
+                onClick={() => onNavigate && onNavigate('about-us')}
                 className="hover:text-primary transition-colors cursor-pointer flex items-center gap-1.5"
               >
                 <span className="text-secondary text-[10px]">✦</span> Mực Khoáng Pigment Siêu Bền Vững

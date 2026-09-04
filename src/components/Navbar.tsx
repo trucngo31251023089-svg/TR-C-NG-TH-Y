@@ -21,10 +21,10 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const navItems: { id: ScreenId; label: string }[] = [
     { id: 'home', label: 'TRANG CHỦ' },
+    { id: 'about-us', label: 'VỀ CHÚNG TÔI' },
     { id: 'design-studio', label: 'STUDIO THIẾT KẾ' },
     { id: 'webar-scanner', label: 'QUÉT LỊCH WEBAR' },
     { id: 'collaborative-portal', label: 'THU THẬP LỜI CHÚC' },
-    { id: 'admin-and-print', label: 'XƯỞNG IN & QUẢN TRỊ' },
     { id: 'checkout', label: 'ĐẶT IN & THANH TOÁN' }
   ];
 

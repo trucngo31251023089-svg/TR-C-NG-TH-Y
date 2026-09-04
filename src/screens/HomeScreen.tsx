@@ -502,7 +502,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ onNavigate }) => {
             </div>
 
             <div 
-              onClick={() => onNavigate('admin-and-print')}
+              onClick={() => onNavigate('about-us')}
               className="bg-surface-container p-6 rounded-xl border border-white/5 space-y-3 cursor-pointer hover:border-secondary/40 transition-colors"
             >
               <span className="font-mono text-2xl text-secondary">03</span>

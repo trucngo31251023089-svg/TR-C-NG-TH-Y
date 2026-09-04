@@ -1160,11 +1160,11 @@ export const DesignStudioScreen: React.FC<DesignStudioScreenProps> = ({ onNaviga
 
               <div className="flex items-center justify-between gap-2 pt-1 text-[11px] font-mono text-on-surface-variant">
                 <button
-                  onClick={() => onNavigate('admin-and-print')}
+                  onClick={() => onNavigate('about-us')}
                   className="hover:text-primary transition-colors flex items-center gap-1"
                 >
-                  <span className="material-symbols-outlined text-xs">print</span>
-                  <span>Xem Lược Đồ Bình Trang In</span>
+                  <span className="material-symbols-outlined text-xs">verified</span>
+                  <span>Quy Chuẩn In Ấn Bảo Tàng</span>
                 </button>
 
                 <button

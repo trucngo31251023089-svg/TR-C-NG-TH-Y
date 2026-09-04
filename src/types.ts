@@ -1,10 +1,10 @@
 export type ScreenId = 
   | 'home' 
+  | 'about-us'
   | 'design-studio' 
   | 'webar-scanner' 
   | 'collaborative-portal' 
   | 'cloud-sync-remote'
-  | 'admin-and-print' 
   | 'checkout';
 
 export interface CalendarMonth {
