@@ -28,6 +28,7 @@ export const DesignStudioScreen: React.FC<DesignStudioScreenProps> = ({ onNaviga
   const [previewMonthIdx, setPreviewMonthIdx] = useState<number>(4); // Month 5 default
   const [selectedEdition, setSelectedEdition] = useState<'desk' | 'wall' | 'bespoke'>('desk');
   const [selectedWood, setSelectedWood] = useState<'walnut' | 'oak' | 'ebony'>('walnut');
+  const [selectedPaper, setSelectedPaper] = useState<'cotton' | 'materica' | 'lustre'>('cotton');
   const [layoutStyle, setLayoutStyle] = useState<'museum-border' | 'minimal-fullbleed' | 'polar-split' | 'gallery-square'>('museum-border');
   const [colorFilter, setColorFilter] = useState<'none' | 'sepia' | 'noir' | 'sunset' | 'botanical'>('none');
   const [fontFamily, setFontFamily] = useState<'serif' | 'sans' | 'mono'>('serif');
@@ -150,14 +151,14 @@ export const DesignStudioScreen: React.FC<DesignStudioScreenProps> = ({ onNaviga
       setIsAiAnalyzing(false);
       const query = aiCustomPrompt.toLowerCase();
       let matched = DESIGN_TEMPLATES[0];
-      let advice = 'Hệ thống gợi ý phong cách trang trọng cổ điển với viền chỉ vàng và khối đế gỗ Walnut Bắc Mỹ bền vững.';
+      let advice = 'Hệ thống gợi ý phong cách trang trọng cổ điển với viền chỉ vàng và chất liệu giấy mỹ thuật Cotton Hahnemühle 310gsm cao cấp.';
 
       if (query.includes('cưới') || query.includes('yêu') || query.includes('vợ') || query.includes('chồng') || query.includes('người yêu')) {
         matched = DESIGN_TEMPLATES.find((t) => t.id === 'mon-amour') || DESIGN_TEMPLATES[3];
-        advice = 'Dành riêng cho câu chuyện tình yêu: Màu hoàng hôn champagne ấm áp, bố cục khung viền bảo tàng sang trọng và đế gỗ Sồi Bắc Âu thanh lịch.';
+        advice = 'Dành riêng cho câu chuyện tình yêu: Màu hoàng hôn champagne ấm áp, bố cục khung viền bảo tàng sang trọng và chất giấy mỹ thuật Fedrigoni Ý thanh lịch.';
       } else if (query.includes('công ty') || query.includes('đối tác') || query.includes('sếp') || query.includes('doanh nghiệp') || query.includes('vip')) {
         matched = DESIGN_TEMPLATES.find((t) => t.id === 'executive-c-suite') || DESIGN_TEMPLATES[4];
-        advice = 'Đẳng cấp ngoại giao và tầm vóc thương hiệu: Khối đế gỗ Walnut dập chìm logo mạ vàng kim, bố cục chia đôi với clip WebAR thông điệp lãnh đạo.';
+        advice = 'Đẳng cấp ngoại giao và tầm vóc thương hiệu: Giấy mỹ thuật Cotton dập kim mạ vàng biểu trưng doanh nghiệp, bố cục chia đôi với clip WebAR thông điệp lãnh đạo.';
       } else if (query.includes('thiền') || query.includes('tối giản') || query.includes('trà') || query.includes('an nhiên') || query.includes('xanh')) {
         matched = DESIGN_TEMPLATES.find((t) => t.id === 'botanical-zen') || DESIGN_TEMPLATES[1];
         advice = 'Tinh thần Wabi-Sabi tĩnh tại: Tông xanh thảo mộc mát dịu, bố cục chia đôi tinh tế và chất liệu giấy mỹ thuật xốp mịn.';
@@ -189,27 +190,63 @@ export const DesignStudioScreen: React.FC<DesignStudioScreenProps> = ({ onNaviga
     showToast('Đã khôi phục thiết kế nguyên bản của Atelier.');
   };
 
-  // Wood Finishes
-  const woodOptions = [
+  // Stand & Frame Options (Đế gỗ tự nhiên dễ tìm hoặc Khung để bàn tiêu chuẩn)
+  const standOptions = [
     {
       id: 'walnut',
-      name: 'Gỗ Óc Chó Walnut Bắc Mỹ',
-      desc: 'Vân cuộn sóng, sắc nâu chocolate trầm ấm, hoàn thiện sáp ong organic.',
-      colorClass: 'bg-[#3e2723]'
+      name: 'Đế Gỗ Thông Mộc Tự Nhiên',
+      tag: 'Gỗ mộc dễ tìm',
+      desc: 'Khối gỗ thông mộc xẻ rãnh tiêu chuẩn, rất dễ tìm tại mọi xưởng mộc, ấm áp, khắc laser tên riêng.',
+      colorClass: 'bg-[#9a6735]',
+      gradientClass: 'bg-gradient-to-r from-[#7a4e23] via-[#9a6735] to-[#6d431c]',
+      slotClass: 'bg-[#3b200c]'
     },
     {
       id: 'oak',
-      name: 'Gỗ Sồi Trắng White Oak',
-      desc: 'Màu vàng sáng thanh thoát phong cách Scandinavian hiện đại.',
-      colorClass: 'bg-[#d7ccc8]'
+      name: 'Đế Gỗ Sồi Tiện Rãnh Cắm',
+      tag: 'Phổ biến & Bền đẹp',
+      desc: 'Gỗ sồi phổ thông vân sáng, bền đẹp, xẻ rãnh nghiêng 15° kẹp vừa vặn 12 tờ lịch giấy.',
+      colorClass: 'bg-[#c2a688]',
+      gradientClass: 'bg-gradient-to-r from-[#9e8367] via-[#c2a688] to-[#886d52]',
+      slotClass: 'bg-[#4a3927]'
     },
     {
       id: 'ebony',
-      name: 'Gỗ Mun Titan Mun Ebony',
-      desc: 'Màu đen huyền bí điểm viền kim loại titan chải xước sang trọng.',
-      colorClass: 'bg-[#212121]'
+      name: 'Khung Để Bàn Tiêu Chuẩn',
+      tag: 'Khung tiện dụng dễ mua',
+      desc: 'Khung ảnh để bàn tiêu chuẩn (13x18cm hoặc 15x20cm, mua đâu cũng có), lồng thay tờ lịch giấy mỗi tháng.',
+      colorClass: 'bg-[#2b2b2b]',
+      gradientClass: 'bg-gradient-to-r from-[#18191c] via-[#2f3136] to-[#18191c]',
+      slotClass: 'bg-[#111113]'
     }
   ];
+
+  // 100% In Trên Giấy Mỹ Thuật (Cam kết không in trực tiếp lên gỗ)
+  const paperOptions = [
+    {
+      id: 'cotton',
+      name: 'Giấy Mỹ Thuật Cotton Hahnemühle 310gsm (Đức)',
+      tag: 'Chuẩn Bảo Tàng FOGRA39',
+      desc: '100% sợi bông cotton tự nhiên, hạt mịn xốp sang trọng, chuẩn in bảo tàng archival 100 năm.',
+      colorClass: 'bg-[#ede7df]'
+    },
+    {
+      id: 'materica',
+      name: 'Giấy Mỹ Thuật Fedrigoni Materica 360gsm (Ý)',
+      tag: 'Gân Hữu Cơ Tự Nhiên',
+      desc: 'Chất giấy mộc mạc hữu cơ, bề mặt gân xốp tự nhiên tạo chiều sâu mỹ cảm thanh tịnh.',
+      colorClass: 'bg-[#f4efe6]'
+    },
+    {
+      id: 'lustre',
+      name: 'Giấy Ảnh Mỹ Thuật Satin Lustre 300gsm (Nhật Bản)',
+      tag: 'Chống Lóa & Ánh Ngọc Trai',
+      desc: 'Bán bóng ánh ngọc trai, tương phản quang học cao, triệt tiêu lóa sáng và chống bám vân tay.',
+      colorClass: 'bg-[#fdfbf7]'
+    }
+  ];
+
+  const woodOptions = standOptions;
 
   // Helper CSS for image filters
   const getFilterClass = () => {
@@ -294,8 +331,8 @@ export const DesignStudioScreen: React.FC<DesignStudioScreenProps> = ({ onNaviga
                   : 'text-on-surface-variant hover:text-primary hover:bg-white/5'
               }`}
             >
-              <span className="material-symbols-outlined text-sm">carpenter</span>
-              <span>Khối Đế & Khắc Chữ</span>
+              <span className="material-symbols-outlined text-sm">description</span>
+              <span>Chất Liệu Giấy & Ép Kim</span>
             </button>
           </div>
         </div>
@@ -338,33 +375,53 @@ export const DesignStudioScreen: React.FC<DesignStudioScreenProps> = ({ onNaviga
               </div>
             </div>
 
-            {/* 3D Simulated Desk Calendar Card Standing on Wood Base */}
+            {/* 3D Simulated Desk Calendar Card Standing on Wood Base or Desk Frame */}
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-black/70 border border-white/10 flex items-center justify-center p-6 shadow-2xl">
-              {/* Subtle Atelier ambient spotlight behind */}
-              <div className="absolute top-0 w-72 h-44 bg-secondary/10 blur-3xl rounded-full pointer-events-none"></div>
-
-              {/* Wooden Base Mockup */}
-              <div
-                className={`absolute bottom-6 w-[82%] sm:w-[75%] h-11 rounded-lg shadow-[0_15px_30px_rgba(0,0,0,0.8)] transition-all duration-500 flex items-center justify-center border border-white/10 z-0 ${
-                  selectedWood === 'walnut'
-                    ? 'bg-[#362115]'
-                    : selectedWood === 'oak'
-                    ? 'bg-[#82665b]'
-                    : 'bg-[#151618]'
-                }`}
-              >
-                {/* Wood Grain subtle accent */}
-                <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:8px_8px] pointer-events-none"></div>
-                {/* Laser engraved signature on wood base */}
-                <span className="font-serif text-[10px] sm:text-[11px] text-[#f4eedb]/85 italic tracking-wider px-4 truncate max-w-[90%] drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">
-                  {engravingText || 'LUMICAL ATELIER 2025'}
+              {/* Material Guarantee Badge */}
+              <div className="absolute top-3 left-3 bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 flex items-center gap-2 z-20">
+                <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+                <span className="font-mono text-[10px] text-white/90 uppercase tracking-wider">
+                  100% IN TRÊN GIẤY MỸ THUẬT • {selectedWood === 'ebony' ? 'KHUNG ĐỂ BÀN TIÊU CHUẨN' : selectedWood === 'oak' ? 'ĐẾ GỖ SỒI TIỆN RÃNH' : 'ĐẾ GỖ THÔNG MỘC DỄ TÌM'}
                 </span>
               </div>
 
-              {/* The Physical Calendar Card Placed into Base Slot */}
+              {/* Subtle Atelier ambient spotlight behind */}
+              <div className="absolute top-0 w-72 h-44 bg-secondary/10 blur-3xl rounded-full pointer-events-none"></div>
+
+              {/* Đế gỗ tự nhiên dễ tìm hoặc Khung để bàn tiêu chuẩn */}
+              {selectedWood !== 'ebony' ? (
+                <div
+                  className={`absolute bottom-5 w-[86%] sm:w-[80%] h-12 rounded-lg shadow-[0_20px_35px_rgba(0,0,0,0.85)] transition-all duration-500 flex flex-col items-center justify-between border z-0 p-1.5 ${
+                    selectedWood === 'walnut'
+                      ? 'bg-gradient-to-b from-[#9a6735] via-[#7d4e22] to-[#543212] border-[#ba8753]/40'
+                      : 'bg-gradient-to-b from-[#d1b597] via-[#a88a69] to-[#785f43] border-[#ecd3ba]/40'
+                  }`}
+                >
+                  {/* Carved Milled Slot for Paper Calendar Leaf */}
+                  <div className="w-[90%] h-1.5 rounded-full bg-black/80 shadow-[inset_0_2px_4px_rgba(0,0,0,0.9)] border-b border-white/10"></div>
+                  
+                  {/* Laser Engraved Message on Natural Wood Face */}
+                  <span className={`font-serif text-[10px] sm:text-[11px] italic tracking-wider px-3 truncate max-w-[92%] drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)] ${
+                    selectedWood === 'walnut' ? 'text-[#f5e3cc]/90' : 'text-[#2a1d12]/90 font-medium'
+                  }`}>
+                    {engravingText || (selectedWood === 'walnut' ? 'LUMICAL 2025 • ĐẾ GỖ THÔNG MỘC DỄ TÌM' : 'LUMICAL 2025 • ĐẾ GỖ SỒI TIỆN RÃNH')}
+                  </span>
+                </div>
+              ) : (
+                /* Khung để bàn tiêu chuẩn - chân đỡ để bàn phía sau */
+                <div className="absolute bottom-5 w-[76%] h-6 bg-gradient-to-b from-neutral-800 to-neutral-950 rounded-lg shadow-[0_15px_30px_rgba(0,0,0,0.8)] border border-white/10 flex items-center justify-center z-0">
+                  <span className="font-mono text-[9px] text-neutral-400 uppercase tracking-widest">
+                    KHUNG ĐỂ BÀN TIÊU CHUẨN • DỄ THAY THẺ GIẤY HÀNG THÁNG
+                  </span>
+                </div>
+              )}
+
+              {/* The Physical Calendar Card Placed into Base Slot or Framed */}
               <div
                 className={`relative z-10 w-[290px] sm:w-[350px] bg-[#1a1b1f] rounded-xl p-4 shadow-[0_20px_40px_rgba(0,0,0,0.9)] border transition-all duration-300 -translate-y-4 ${
-                  layoutStyle === 'museum-border'
+                  selectedWood === 'ebony'
+                    ? 'ring-4 ring-neutral-700/80 border-2 border-neutral-500 shadow-[0_25px_50px_rgba(0,0,0,0.95)]'
+                    : layoutStyle === 'museum-border'
                     ? 'border-[#d4af37]/40 ring-1 ring-[#d4af37]/20'
                     : layoutStyle === 'gallery-square'
                     ? 'border-white/30'
@@ -590,7 +647,7 @@ export const DesignStudioScreen: React.FC<DesignStudioScreenProps> = ({ onNaviga
 
                       <div className="pt-2 border-t border-white/10 flex items-center justify-between">
                         <div className="flex gap-2 text-[10px] font-mono text-on-surface-variant">
-                          <span>Đế: {activeAiAdvice.matchedTemplate.woodBase}</span>
+                          <span>Chất liệu: 100% Giấy mỹ thuật</span>
                           <span>•</span>
                           <span>Bố cục: {activeAiAdvice.matchedTemplate.layoutStyle}</span>
                         </div>
@@ -949,99 +1006,131 @@ export const DesignStudioScreen: React.FC<DesignStudioScreenProps> = ({ onNaviga
             )}
 
             {/* ============================================================== */}
-            {/* TAB 3: CRAFT SPECS & WOOD BASE                                 */}
+            {/* TAB 3: CRAFT SPECS: STAND / FRAME & 100% FINE-ART PAPER       */}
             {/* ============================================================== */}
             {activeTab === 'craft-specs' && (
               <div className="bg-surface-container rounded-3xl p-6 sm:p-8 border border-white/10 space-y-6">
-                <h3 className="font-serif text-xl text-primary pb-3 border-b border-white/10">
-                  Quy Cách Chế Tác & Khối Đế Gỗ
-                </h3>
+                <div className="pb-3 border-b border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <div>
+                    <h3 className="font-serif text-xl text-primary">
+                      Đế Gỗ Dễ Tìm, Khung & Giấy Mỹ Thuật In Ấn
+                    </h3>
+                    <p className="text-xs text-on-surface-variant mt-0.5 font-sans">
+                      In 100% trên giấy mỹ thuật cao cấp • Sử dụng đế gỗ tự nhiên phổ thông hoặc khung để bàn tiện dụng
+                    </p>
+                  </div>
+                  <span className="text-[11px] font-mono text-emerald-300 px-2.5 py-1 rounded bg-emerald-950/60 border border-emerald-500/30 shrink-0 self-start sm:self-auto flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                    100% In Trên Giấy (Không In Lên Gỗ)
+                  </span>
+                </div>
 
-                {/* Edition Selection */}
-                <div className="space-y-2">
-                  <label className="block text-xs font-mono text-on-surface-variant uppercase">
-                    1. DÒNG SẢN PHẨM NIÊN LỊCH
-                  </label>
-                  <div className="grid grid-cols-3 gap-2">
-                    <button
-                      type="button"
-                      onClick={() => setSelectedEdition('desk')}
-                      className={`p-3 rounded-xl border text-left text-xs font-mono transition-all ${
-                        selectedEdition === 'desk'
-                          ? 'bg-secondary-container/40 border-secondary ring-1 ring-secondary text-primary font-bold'
-                          : 'bg-surface-container-lowest border-white/10 text-on-surface-variant'
-                      }`}
-                    >
-                      <span className="block">Lịch Để Bàn</span>
-                      <span className="text-[10px] text-secondary">1.250.000 ₫</span>
-                    </button>
-
-                    <button
-                      type="button"
-                      onClick={() => setSelectedEdition('wall')}
-                      className={`p-3 rounded-xl border text-left text-xs font-mono transition-all ${
-                        selectedEdition === 'wall'
-                          ? 'bg-secondary-container/40 border-secondary ring-1 ring-secondary text-primary font-bold'
-                          : 'bg-surface-container-lowest border-white/10 text-on-surface-variant'
-                      }`}
-                    >
-                      <span className="block">Treo Tường</span>
-                      <span className="text-[10px] text-secondary">2.850.000 ₫</span>
-                    </button>
-
-                    <button
-                      type="button"
-                      onClick={() => setSelectedEdition('bespoke')}
-                      className={`p-3 rounded-xl border text-left text-xs font-mono transition-all ${
-                        selectedEdition === 'bespoke'
-                          ? 'bg-secondary-container/40 border-secondary ring-1 ring-secondary text-primary font-bold'
-                          : 'bg-surface-container-lowest border-white/10 text-on-surface-variant'
-                      }`}
-                    >
-                      <span className="block">Gia Tộc VIP</span>
-                      <span className="text-[10px] text-secondary">Theo Thiết Kế</span>
-                    </button>
+                {/* Clear Material & Craftsmanship Commitment Box */}
+                <div className="p-4 rounded-xl bg-surface-container-lowest border border-white/10 flex items-start gap-3 text-xs leading-relaxed">
+                  <span className="material-symbols-outlined text-secondary text-lg shrink-0 mt-0.5">verified</span>
+                  <div className="space-y-1">
+                    <div className="font-mono text-secondary font-semibold uppercase tracking-wider text-[11px]">
+                      Cam Kết Chất Liệu & Tiện Dụng:
+                    </div>
+                    <div className="text-on-surface-variant font-sans">
+                      Toàn bộ 12 tháng lịch và bìa được <strong className="text-white">in 100% trên giấy mỹ thuật cao cấp nhập khẩu</strong> (Cotton Hahnemühle 310gsm Đức, Fedrigoni Ý). Khối đế gỗ tự nhiên hoặc khung để bàn tiêu chuẩn là các vật liệu cực kỳ dễ tìm, bền đẹp và thân thiện, chỉ đóng vai trò làm giá đỡ hoặc khung bảo vệ thẻ lịch giấy, <strong className="text-white">hoàn toàn không in trực tiếp lên gỗ</strong>.
+                    </div>
                   </div>
                 </div>
 
-                {/* Wood Base Finishes */}
+                {/* 1. Stand & Frame Selection */}
                 <div className="space-y-3">
-                  <label className="block text-xs font-mono text-on-surface-variant uppercase">
-                    2. CHẤT LIỆU KHỐI ĐẾ GỖ CNC NGUYÊN KHỐI
-                  </label>
-                  <div className="space-y-2">
-                    {woodOptions.map((wood) => (
+                  <div className="flex items-center justify-between">
+                    <label className="block text-xs font-mono text-on-surface-variant uppercase">
+                      1. VẬT LIỆU CHÂN ĐẾ GỖ HOẶC KHUNG ĐỂ BÀN (DỄ TÌM, TIỆN DỤNG)
+                    </label>
+                    <span className="text-[10px] text-secondary font-mono">Dễ gia công & dễ thay thế</span>
+                  </div>
+                  <div className="space-y-2.5">
+                    {standOptions.map((stand) => (
                       <div
-                        key={wood.id}
-                        onClick={() => setSelectedWood(wood.id as any)}
+                        key={stand.id}
+                        onClick={() => setSelectedWood(stand.id as any)}
                         className={`p-3.5 rounded-xl border cursor-pointer transition-all flex items-center justify-between ${
-                          selectedWood === wood.id
+                          selectedWood === stand.id
                             ? 'bg-secondary-container/30 border-secondary ring-1 ring-secondary'
                             : 'bg-surface-container-lowest border-white/10 hover:border-white/30'
                         }`}
                       >
                         <div className="flex items-center gap-3">
-                          <div className={`w-7 h-7 rounded-full ${wood.colorClass} border border-white/20 shrink-0`}></div>
+                          <div className={`w-8 h-8 rounded-lg ${stand.colorClass} border border-white/20 shrink-0 shadow-sm flex items-center justify-center text-white/70`}>
+                            <span className="material-symbols-outlined text-sm">
+                              {stand.id === 'ebony' ? 'crop_portrait' : 'deck'}
+                            </span>
+                          </div>
                           <div>
-                            <div className="font-serif text-sm text-primary">{wood.name}</div>
-                            <div className="text-[11px] text-on-surface-variant line-clamp-1">{wood.desc}</div>
+                            <div className="flex items-center gap-2">
+                              <span className="font-serif text-sm text-primary font-medium">{stand.name}</span>
+                              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-white/5 text-secondary border border-white/10">
+                                {stand.tag}
+                              </span>
+                            </div>
+                            <div className="text-[11px] text-on-surface-variant line-clamp-1 mt-0.5">{stand.desc}</div>
                           </div>
                         </div>
-                        {selectedWood === wood.id && (
-                          <span className="material-symbols-outlined text-secondary text-lg">check_circle</span>
+                        {selectedWood === stand.id && (
+                          <span className="material-symbols-outlined text-secondary text-xl">check_circle</span>
                         )}
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Laser Engraving */}
-                <div className="space-y-2">
+                {/* 2. Fine-Art Paper Selection (100% on paper) */}
+                <div className="space-y-3 pt-2 border-t border-white/10">
                   <div className="flex items-center justify-between">
                     <label className="block text-xs font-mono text-on-surface-variant uppercase">
-                      3. NỘI DUNG KHẮC LASER CHỮ KÝ GIA TỘC
+                      2. CHẤT LIỆU GIẤY IN MỸ THUẬT (100% IN TRÊN GIẤY - KHÔNG DÙNG GỖ)
                     </label>
-                    <span className="text-[10px] text-secondary font-mono">Khắc sâu 0.4mm phủ vàng kim</span>
+                    <span className="text-[10px] text-emerald-400 font-mono">Chuẩn Bảo Tàng FOGRA39</span>
+                  </div>
+                  <div className="space-y-2.5">
+                    {paperOptions.map((paper) => (
+                      <div
+                        key={paper.id}
+                        onClick={() => setSelectedPaper(paper.id as any)}
+                        className={`p-3.5 rounded-xl border cursor-pointer transition-all flex items-center justify-between ${
+                          selectedPaper === paper.id
+                            ? 'bg-secondary-container/30 border-secondary ring-1 ring-secondary'
+                            : 'bg-surface-container-lowest border-white/10 hover:border-white/30'
+                        }`}
+                      >
+                        <div className="flex items-center gap-3">
+                          <div className={`w-8 h-8 rounded-lg ${paper.colorClass} border border-white/20 shrink-0 shadow-sm flex items-center justify-center text-neutral-800`}>
+                            <span className="material-symbols-outlined text-sm">description</span>
+                          </div>
+                          <div>
+                            <div className="flex items-center gap-2">
+                              <span className="font-serif text-sm text-primary font-medium">{paper.name}</span>
+                              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-white/5 text-secondary border border-white/10">
+                                {paper.tag}
+                              </span>
+                            </div>
+                            <div className="text-[11px] text-on-surface-variant line-clamp-1 mt-0.5">{paper.desc}</div>
+                          </div>
+                        </div>
+                        {selectedPaper === paper.id && (
+                          <span className="material-symbols-outlined text-secondary text-xl">check_circle</span>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* 3. Laser Engraving on Wood Base or Frame Tag */}
+                <div className="space-y-2 pt-2 border-t border-white/10">
+                  <div className="flex items-center justify-between">
+                    <label className="block text-xs font-mono text-on-surface-variant uppercase">
+                      3. NỘI DUNG KHẮC LASER TÊN RIÊNG LÊN ĐẾ GỖ / VIỀN KHUNG
+                    </label>
+                    <span className="text-[10px] text-secondary font-mono">
+                      {selectedWood === 'ebony' ? 'Khắc nhãn kim loại gắn khung' : 'Khắc laser chìm 0.5mm mặt trước đế gỗ'}
+                    </span>
                   </div>
                   <input
                     type="text"

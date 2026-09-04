@@ -29,7 +29,7 @@ export interface DesignTemplate {
   tagline: string;
   category: 'family' | 'romance' | 'minimal' | 'botanical' | 'executive' | 'cyber';
   coverImage: string;
-  woodBase: 'walnut' | 'oak' | 'ebony';
+  woodBase: 'walnut' | 'oak' | 'ebony' | 'frame' | 'pine';
   layoutStyle: 'museum-border' | 'minimal-fullbleed' | 'polar-split' | 'gallery-square';
   colorFilter: 'none' | 'sepia' | 'noir' | 'sunset' | 'botanical';
   fontFamily: 'serif' | 'sans' | 'mono';
@@ -69,6 +69,8 @@ export interface MemoryPost {
   mediaMeta: string;
   timestamp: string;
   e2eeVerified: boolean;
+  audioUrl?: string;
+  audioDuration?: string;
 }
 
 export interface UserProfile {

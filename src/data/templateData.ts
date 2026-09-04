@@ -14,7 +14,7 @@ export const DESIGN_TEMPLATES: DesignTemplate[] = [
     description: 'Thiết kế trang nhã với viền tinh tế, màu ảnh ấm áp sâu lắng. Thích hợp cho các dịp sum họp gia đình, mừng thọ ông bà cha mẹ và lưu giữ khoảnh khắc sum vầy.',
     idealFor: 'Quà biếu Cha Mẹ, mừng thọ ông bà, kỷ niệm ngày cưới và họp mặt gia đình',
     accentColor: '#d4af37',
-    previewTags: ['Gia đình', 'Ấm áp', 'Gỗ Walnut', 'Viền trang nhã'],
+    previewTags: ['Gia đình', 'Ấm áp', 'Giấy Cotton 310gsm', 'Viền trang nhã'],
     monthsData: [
       {
         monthNumber: 1,
@@ -52,10 +52,10 @@ export const DESIGN_TEMPLATES: DesignTemplate[] = [
     layoutStyle: 'polar-split',
     colorFilter: 'botanical',
     fontFamily: 'sans',
-    description: 'Lấy cảm hứng từ triết lý Wabi-Sabi Nhật Bản, tôn vinh vẻ đẹp tĩnh tại và thanh lọc tâm trí. Giấy mỹ thuật xốp mịn kết hợp cùng đế gỗ Sồi Bắc Âu sáng ấm.',
+    description: 'Lấy cảm hứng từ triết lý Wabi-Sabi Nhật Bản, tôn vinh vẻ đẹp tĩnh tại và thanh lọc tâm trí. Giấy mỹ thuật xốp mịn kết hợp cùng chân đế giấy mỹ thuật bồi gân cứng cáp thanh nhã.',
     idealFor: 'Bàn làm việc sáng tạo, phòng trà, quà tặng thiền định và chữa lành',
     accentColor: '#8a9a86',
-    previewTags: ['Zen', 'Tự nhiên', 'Gỗ Sồi Trắng', 'Tối giản'],
+    previewTags: ['Zen', 'Tự nhiên', 'Giấy Fedrigoni Ý', 'Tối giản'],
     monthsData: [
       {
         monthNumber: 1,
@@ -85,10 +85,10 @@ export const DESIGN_TEMPLATES: DesignTemplate[] = [
     layoutStyle: 'minimal-fullbleed',
     colorFilter: 'noir',
     fontFamily: 'mono',
-    description: 'Định hình đẳng cấp của sự chuẩn xác. Tông màu than chì than mờ kết hợp cùng đế gỗ Mun chải cạnh titan xước. Từng mốc ngày được xử lý sắc nét như mặt số chronograph.',
+    description: 'Định hình đẳng cấp của sự chuẩn xác. Tông màu than chì than mờ in trên giấy mỹ thuật đen mờ Rives Tradition 320gsm dập nổi cạnh sắc sảo. Từng mốc ngày được xử lý sắc nét như mặt số chronograph.',
     idealFor: 'Văn phòng C-Level, kiến trúc sư, tín đồ phong cách tối giản cao cấp',
     accentColor: '#bbcac1',
-    previewTags: ['Monochrome', 'Titanium', 'Gỗ Mun', 'Chronograph'],
+    previewTags: ['Monochrome', 'Giấy Rives Pháp', 'Dập nổi', 'Chronograph'],
     monthsData: [
       {
         monthNumber: 1,
@@ -146,7 +146,7 @@ export const DESIGN_TEMPLATES: DesignTemplate[] = [
     description: 'Chuẩn mực quà tặng ngoại giao cao cấp cho đối tác chiến lược và ban lãnh đạo. Tích hợp video thông điệp truyền cảm hứng từ Chủ tịch Hội đồng Quản trị qua WebAR.',
     idealFor: 'Quà tặng VIP Tết, tri ân cổ đông, quà kỷ niệm thành lập tập đoàn',
     accentColor: '#3949ab',
-    previewTags: ['Ngoại giao', 'B2B VIP', 'Gỗ Walnut', 'Khắc logo'],
+    previewTags: ['Ngoại giao', 'B2B VIP', 'Giấy Cotton 310gsm', 'Ép kim logo'],
     monthsData: [
       {
         monthNumber: 1,
@@ -171,7 +171,7 @@ export const DESIGN_TEMPLATES: DesignTemplate[] = [
     description: 'Thiết kế tối ưu hóa cho điểm neo nhận diện quang học WebAR với độ chính xác 99.9%. Hiệu ứng tương phản mạnh mẽ đưa thế giới số bước ra đời thực một cách kỳ diệu.',
     idealFor: 'Nhà sáng tạo nội dung, công nghệ, studio nghệ thuật, game và crypto',
     accentColor: '#00e5ff',
-    previewTags: ['WebAR 60FPS', 'Công nghệ', 'Gỗ Mun', 'Điểm neo quang học'],
+    previewTags: ['WebAR 60FPS', 'Công nghệ', 'Giấy Canson Siêu Mịn', 'Điểm neo quang học'],
     monthsData: [
       {
         monthNumber: 1,
@@ -237,12 +237,12 @@ export const AI_SUGGESTION_PROMPTS = [
   {
     label: 'Quà mừng thọ 80 tuổi Ông Bà',
     templateId: 'heritage-ancestral',
-    aiAdvice: 'Với dịp mừng thọ, chất liệu gỗ Walnut ấm áp kết hợp cùng tông ảnh ấm sepia sẽ mang lại cảm giác thân thương, gắn kết. Bạn có thể đính kèm lời chúc mừng thọ từ con cháu và các video sum họp gia đình ngày Tết.'
+    aiAdvice: 'Với dịp mừng thọ, chất liệu giấy mỹ thuật Cotton ấm áp kết hợp cùng tông ảnh ấm sepia sẽ mang lại cảm giác thân thương, gắn kết. Bạn có thể đính kèm lời chúc mừng thọ từ con cháu và các video sum họp gia đình ngày Tết.'
   },
   {
     label: 'Kỷ niệm 5 năm ngày cưới lãng mạn',
     templateId: 'mon-amour',
-    aiAdvice: 'Chọn phong cách Mon Amour với màu hoàng hôn ngọt ngào, bố cục khung viền bảo tàng sang trọng. Khối đế gỗ Sồi trắng thanh lịch, khắc laser ngày hẹn ước đầu tiên và đính kèm 12 video ngắn từng chuyến đi của hai bạn.'
+    aiAdvice: 'Chọn phong cách Mon Amour với màu hoàng hôn ngọt ngào, bố cục khung viền bảo tàng sang trọng trên nền giấy mỹ thuật cao cấp dập kim ngày hẹn ước đầu tiên và đính kèm 12 video ngắn từng chuyến đi của hai bạn.'
   },
   {
     label: 'Bàn làm việc tối giản & Thiền định',
@@ -252,7 +252,7 @@ export const AI_SUGGESTION_PROMPTS = [
   {
     label: 'Quà biếu Đối tác C-Suite cuối năm',
     templateId: 'executive-c-suite',
-    aiAdvice: 'Phong cách Executive C-Suite thể hiện tầm nhìn và sự tín nhiệm tuyệt đối. Gỗ Walnut phay CNC dập chìm logo công ty, kết hợp clip WebAR lời chúc năm mới từ Tổng Giám Đốc tạo ấn tượng ngoại giao sâu sắc.'
+    aiAdvice: 'Phong cách Executive C-Suite thể hiện tầm nhìn và sự tín nhiệm tuyệt đối. Giấy mỹ thuật bồi dày 4 lớp ép nhũ vàng dập chìm logo công ty, kết hợp clip WebAR lời chúc năm mới từ Tổng Giám Đốc tạo ấn tượng ngoại giao sâu sắc.'
   },
   {
     label: 'Bộ sưu tập công nghệ WebAR độc lạ',

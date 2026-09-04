@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { ScreenId } from '../types';
 import { CALENDAR_MONTHS } from '../data/mockData';
 import confetti from 'canvas-confetti';
+import { playSpatialChimeSound, formatAudioTime } from '../utils/audioUtils';
 
 interface WebARScannerScreenProps {
   onNavigate: (screen: ScreenId) => void;
@@ -18,10 +19,59 @@ export const WebARScannerScreen: React.FC<WebARScannerScreenProps> = ({ onNaviga
   const [trackingConfidence, setTrackingConfidence] = useState<number>(99.8);
   const [arMode, setArMode] = useState<'video' | '3d-spatial' | 'wireframe'>('video');
 
+  // Voice note in letter modal state
+  const [letterAudioPlaying, setLetterAudioPlaying] = useState<boolean>(false);
+  const [letterAudioTime, setLetterAudioTime] = useState<number>(0);
+  const stopChimeRef = useRef<(() => void) | null>(null);
+
   const videoRef = useRef<HTMLVideoElement>(null);
   const streamRef = useRef<MediaStream | null>(null);
 
   const currentMonth = CALENDAR_MONTHS[selectedMonthIdx];
+
+  const handleToggleMute = () => {
+    const next = !isMuted;
+    setIsMuted(next);
+    if (!next) {
+      playSpatialChimeSound();
+    }
+  };
+
+  const togglePlayLetterAudio = () => {
+    if (letterAudioPlaying) {
+      if (stopChimeRef.current) {
+        stopChimeRef.current();
+        stopChimeRef.current = null;
+      }
+      setLetterAudioPlaying(false);
+    } else {
+      setLetterAudioPlaying(true);
+      stopChimeRef.current = playSpatialChimeSound(() => {
+        setLetterAudioPlaying(false);
+        setLetterAudioTime(0);
+      });
+    }
+  };
+
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+    if (letterAudioPlaying) {
+      timer = setInterval(() => {
+        setLetterAudioTime((prev) => (prev >= 6 ? 0 : prev + 1));
+      }, 1000);
+    } else {
+      setLetterAudioTime(0);
+    }
+    return () => clearInterval(timer);
+  }, [letterAudioPlaying]);
+
+  useEffect(() => {
+    return () => {
+      if (stopChimeRef.current) {
+        stopChimeRef.current();
+      }
+    };
+  }, []);
 
   // Camera initialization attempt
   const startCamera = async () => {
@@ -120,12 +170,13 @@ export const WebARScannerScreen: React.FC<WebARScannerScreenProps> = ({ onNaviga
         <div className="flex items-center gap-2">
           {/* Audio toggle */}
           <button
-            onClick={() => setIsMuted(!isMuted)}
+            onClick={handleToggleMute}
             className={`px-3 py-1.5 rounded text-xs font-mono flex items-center gap-1.5 transition-colors ${
               !isMuted 
                 ? 'bg-secondary-container text-secondary border border-secondary/40' 
                 : 'bg-surface-container-high text-on-surface-variant'
             }`}
+            title={isMuted ? 'Bật âm thanh' : 'Tắt âm thanh'}
           >
             <span className="material-symbols-outlined text-sm">
               {isMuted ? 'volume_off' : 'volume_up'}
@@ -372,24 +423,58 @@ export const WebARScannerScreen: React.FC<WebARScannerScreenProps> = ({ onNaviga
             </div>
 
             {/* Audio Voice Note Player with synthesizer simulation */}
-            <div className="bg-surface-container-high p-4 rounded-xl border border-white/10 space-y-2">
+            <div className="bg-surface-container-high p-4 rounded-xl border border-white/10 space-y-3">
               <div className="flex items-center justify-between text-xs">
                 <div className="flex items-center gap-2">
                   <span className="material-symbols-outlined text-secondary text-base">mic</span>
-                  <span className="font-mono text-primary text-[11px]">Tin Nhắn Giọng Nói Gốc (FLAC 24-bit)</span>
+                  <span className="font-mono text-primary text-[11px]">Tin Nhắn Giọng Nói Gốc (FLAC 24-bit Spatial)</span>
+                  {letterAudioPlaying && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  )}
                 </div>
-                <span className="font-mono text-secondary text-[11px]">02:15</span>
+                <span className="font-mono text-secondary text-[11px]">
+                  {formatAudioTime(letterAudioTime)} / 00:06
+                </span>
               </div>
 
-              {/* Animated Audio Waveform */}
-              <div className="flex items-center gap-1 h-8 py-1">
-                {[40, 60, 90, 30, 75, 100, 85, 45, 60, 70, 95, 50, 65, 80, 40, 90, 100, 70, 30, 60, 85, 40, 55, 75].map((h, i) => (
-                  <div
-                    key={i}
-                    className="flex-1 bg-secondary rounded-full transition-all duration-300 hover:bg-primary"
-                    style={{ height: `${h}%` }}
-                  ></div>
-                ))}
+              {/* Player control & Animated Audio Waveform */}
+              <div className="flex items-center gap-3">
+                <button
+                  type="button"
+                  onClick={togglePlayLetterAudio}
+                  className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 transition-all ${
+                    letterAudioPlaying
+                      ? 'bg-secondary text-on-secondary shadow-[0_0_12px_rgba(187,202,193,0.6)] scale-105'
+                      : 'bg-primary text-on-primary hover:scale-105'
+                  }`}
+                  title={letterAudioPlaying ? 'Tạm dừng' : 'Bấm để nghe lời nhắn âm thanh'}
+                >
+                  <span className="material-symbols-outlined text-xl">
+                    {letterAudioPlaying ? 'pause' : 'play_arrow'}
+                  </span>
+                </button>
+
+                <div className="flex-1 flex items-center gap-1 h-8 py-1">
+                  {[40, 60, 90, 30, 75, 100, 85, 45, 60, 70, 95, 50, 65, 80, 40, 90, 100, 70, 30, 60, 85, 40, 55, 75].map((h, i) => (
+                    <div
+                      key={i}
+                      className={`flex-1 rounded-full transition-all duration-200 ${
+                        letterAudioPlaying ? 'bg-secondary animate-pulse' : 'bg-secondary/40'
+                      }`}
+                      style={{
+                        height: letterAudioPlaying
+                          ? `${Math.min(100, Math.max(15, (h + Math.sin(letterAudioTime * 3 + i) * 30)))}%`
+                          : `${Math.max(15, h * 0.4)}%`,
+                        animationDelay: `${i * 60}ms`
+                      }}
+                    ></div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="text-[10px] font-mono text-on-surface-variant flex items-center justify-between">
+                <span>{letterAudioPlaying ? 'Đang phát âm thanh qua Web Audio Engine' : 'Nhấn nút Play để nghe giọng nói người gửi'}</span>
+                <span className="text-secondary">E2EE Decrypted</span>
               </div>
             </div>
 

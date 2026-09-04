@@ -49,7 +49,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenVault }) => {
                 onClick={() => onNavigate && onNavigate('design-studio')}
                 className="hover:text-primary transition-colors cursor-pointer flex items-center gap-1.5"
               >
-                <span className="text-secondary text-[10px]">✦</span> Khung Khối Titan & Gỗ Mun Khắc Tên
+                <span className="text-secondary text-[10px]">✦</span> Giấy Mỹ Thuật Châu Âu & Ép Kim Thủ Công
               </li>
               <li 
                 onClick={() => onNavigate && onNavigate('webar-scanner')}

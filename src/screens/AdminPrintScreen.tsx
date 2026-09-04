@@ -81,9 +81,9 @@ export const AdminPrintScreen: React.FC<AdminPrintScreenProps> = ({ onNavigate }
           </div>
 
           <div className="bg-surface-container p-4 rounded-xl border border-white/10 space-y-1">
-            <span className="font-mono text-[10px] text-on-surface-variant uppercase block">KHỐI ĐẾ VẬT LÝ</span>
-            <div className="font-serif text-2xl text-primary font-semibold">GỖ WALNUT</div>
-            <span className="text-[11px] text-on-surface-variant font-mono">Phay CNC • Sáp Ong Organic</span>
+            <span className="font-mono text-[10px] text-on-surface-variant uppercase block">CHẤT LIỆU IN ẤN</span>
+            <div className="font-serif text-2xl text-primary font-semibold">100% GIẤY COTTON</div>
+            <span className="text-[11px] text-on-surface-variant font-mono">Hahnemühle 310gsm • Chân Đế Giấy Bồi</span>
           </div>
 
           <div className="bg-surface-container p-4 rounded-xl border border-white/10 space-y-1 col-span-2 sm:col-span-1">

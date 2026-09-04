@@ -215,14 +215,14 @@ export const AtelierAccountModal: React.FC<AtelierAccountModalProps> = ({
                   ĐƠN HÀNG ĐANG CHẾ TÁC TẠI XƯỞNG
                 </span>
                 <span className="px-2 py-0.5 rounded bg-secondary-container text-secondary text-[10px] font-mono font-medium">
-                  KHÂU 3/5: ÉP NHŨ & PHÔI GỖ
+                  KHÂU 3/5: ÉP NHŨ & BỒI GIẤY MỸ THUẬT
                 </span>
               </div>
 
               <div className="flex items-start justify-between">
                 <div>
                   <div className="font-mono text-sm text-primary font-semibold">#LUMI-8829-VN</div>
-                  <div className="text-xs text-on-surface-variant">Lịch Thẻ Để Bàn • Gỗ Óc Chó Walnut Bắc Mỹ</div>
+                  <div className="text-xs text-on-surface-variant">Lịch Thẻ Để Bàn • 100% Giấy Cotton Hahnemühle 310gsm</div>
                   <div className="text-[11px] text-outline font-mono mt-0.5">12 Video 4K HDR • 38 Lời Chúc WebAR</div>
                 </div>
                 <span className="font-serif text-lg text-titanium font-medium">1.250.000 ₫</span>

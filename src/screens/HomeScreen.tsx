@@ -18,10 +18,10 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ onNavigate }) => {
       image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC7JpK0QF3C4XYFe9sn7qwDkCU4z6N3GOQNIgPdEAKlJTBfoN2IpXgsp0LkqJTxGj_EH_GQv-OXcIKmqDbSVZ7k1hoB4J5PMx0dD5BdnNvZ-WSh8qU6-9Gz32LYLD8O5P3av4WRXwInV9NYk_d9NuQwVPJsQdLqnfjqL81P5TxgGLheiQKfLDTQVRmt7Du8k_NuX7gBqb5sBzVnynPhuL4OEGbRLhGQ3b_aErb7eRx0A8DKSKyZqoJZ',
       features: [
         'Kích thước: 16 x 24 cm tiêu chuẩn',
-        'Khối đế phay CNC gỗ Walnut Bắc Mỹ',
-        '12 thẻ in mỹ thuật Cotton Archival 300gsm',
-        'WebAR 60FPS không cần cài app',
-        'Tích hợp Cổng thu thập lời chúc bí mật'
+        '100% In trên giấy mỹ thuật Cotton Archival 300gsm (12 thẻ tháng)',
+        'Đế gỗ tự nhiên tiện rãnh dễ tìm (hoặc khung để bàn tiêu chuẩn)',
+        'Khắc laser tên riêng lên đế gỗ hoặc khung theo yêu cầu',
+        'WebAR 60FPS không cần cài app'
       ],
       popular: true
     },
@@ -33,7 +33,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ onNavigate }) => {
       image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB8lHOeNQ9g87caPr6QZTkT2SKgbWRDZNNVtBSpwfsIXqiDoHb8gjcanCOey_I0hqjQMjunj_G2HlOTTOFVxHHfzgpA9t1xyuGbou7u9otdC7o65j7LFdeapZ3GJKGhzmy24azAWUPOdu8pfUL59N8mSDRMBwEFCVFJrNSQiL70uUMOEtjAaRM38GDaegpZrX_loXkmnXg3m5fe3lAHX2ttaIeOPquUjcEDVZfYAIcMaBs5olokP2UE',
       features: [
         'Kích thước: 40 x 60 cm Gallery Size',
-        'Nẹp gỗ tự nhiên nam châm vĩnh cửu',
+        'Nẹp gáy giấy mỹ thuật ép nhiệt dập nổi',
         'Cotton Rag 350gsm phủ bảo vệ nano',
         'AR Video 4K HDR & Âm thanh vòm Spatial',
         'Bảo hành màu sắc bảo tàng 50 năm'
@@ -47,9 +47,9 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ onNavigate }) => {
       price: 'Theo Thiết Kế',
       image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBDX1DInEw6PbI9IKThiRviLLvupeSPfpVEjGkxFE53c3VjjYjIrhDsNWLb1BO_g6m8XO2XZzv1rFwGm7W0MTpVpSac5pEGZT0c7Nw0BkllSZtEX9uZjiSC7gDRenmVpbigmD-SG9SSdBYpENQ4_7YS2qatOrNyXWOqCwjw-3EQD1P0xIP4qCZvkyze2hmT4sBvBBCU6vay5gpukhuIVVklap6kH4IvenBIKH-LJH-tm8wvkxtO5t5s',
       features: [
-        'Tùy chỉnh chất liệu: Gỗ mun, Kim loại titan',
-        'Khắc laser chữ ký cá nhân hóa',
-        'Hộp sơn mài bọc lụa thủ công cao cấp',
+        'Tùy chỉnh chất liệu: Giấy Hahnemühle Đức, Fedrigoni Ý, Rives Pháp',
+        'Dập chìm / Ép kim tên riêng cá nhân hóa',
+        'Hộp giấy mỹ thuật ép nhũ thủ công cao cấp',
         'Mã hóa bảo mật cấp độ phòng trưng bày',
         'Chuyên viên giám tuyển riêng phục vụ'
       ],
@@ -114,8 +114,8 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ onNavigate }) => {
                 <div className="text-[11px] text-on-surface-variant">Không cần cài ứng dụng</div>
               </div>
               <div>
-                <div className="font-mono text-xs text-secondary font-semibold">GỖ WALNUT</div>
-                <div className="text-[11px] text-on-surface-variant">Phay CNC nguyên khối</div>
+                <div className="font-mono text-xs text-secondary font-semibold">100% GIẤY MỸ THUẬT</div>
+                <div className="text-[11px] text-on-surface-variant">Cotton Archival Châu Âu</div>
               </div>
               <div>
                 <div className="font-mono text-xs text-secondary font-semibold">E2EE 256-BIT</div>
@@ -129,7 +129,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ onNavigate }) => {
             <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-surface-container-lowest aspect-[4/3] group">
               <img
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2FmoSFOBzht0yH4MZMlYlytC-8OdF9l_uw7KFa3u_5IfPOSJQuSjdninGVtykFnLXkj__okqqiZjs7ZExoHRb_uQ7zKDsfuj5YSrWn6BU4-qOFFl2Q970Z6TtFqWQqoAYrXVVhGoO08lV2WvztzGqqaRCGvrv91HHyabpG3xQRPsxpt0i2PO70zpjjkaNIov_CSLKM1-dSHecC9_zimaVmZ7mNhJbvoQVvok42ub_o839IYpeqBN2"
-                alt="LumiCal Bespoke Calendar on Walnut Base"
+                alt="LumiCal Bespoke Fine Art Paper Calendar"
                 className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
               />
 
@@ -344,7 +344,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ onNavigate }) => {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded bg-black/75 backdrop-blur-sm text-[10px] font-mono text-secondary border border-white/10">
-                      Gỗ {tmpl.woodBase}
+                      100% Giấy Mỹ Thuật
                     </div>
                   </div>
 
@@ -506,9 +506,9 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ onNavigate }) => {
               className="bg-surface-container p-6 rounded-xl border border-white/5 space-y-3 cursor-pointer hover:border-secondary/40 transition-colors"
             >
               <span className="font-mono text-2xl text-secondary">03</span>
-              <h4 className="font-serif text-lg text-primary">In Mỹ Thuật & Tiện Gỗ CNC</h4>
+              <h4 className="font-serif text-lg text-primary">In Mỹ Thuật & Bồi Giấy Thủ Công</h4>
               <p className="text-xs text-on-surface-variant leading-relaxed">
-                Xưởng thủ công tiến hành in phủ bảo tàng, phay đế gỗ óc chó và khắc laser chữ ký cá nhân hóa.
+                Xưởng thủ công tiến hành in phủ bảo tàng FOGRA39, bồi ép giấy mỹ thuật 3 lớp và dập kim tên riêng cá nhân hóa.
               </p>
             </div>
 
@@ -585,7 +585,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ onNavigate }) => {
               </div>
             </div>
             <p className="font-body-md text-xs sm:text-sm text-on-surface-variant italic leading-relaxed">
-              “Màu in đạt chuẩn FOGRA39 với Delta E &lt; 0.84 là tiêu chuẩn tôi chỉ thấy ở các triển lãm mỹ thuật châu Âu. Khối gỗ óc chó được đánh bóng bằng sáp ong tự nhiên mang lại hương thơm nhẹ nhàng rất sang.”
+              “Màu in đạt chuẩn FOGRA39 với Delta E &lt; 0.84 là tiêu chuẩn tôi chỉ thấy ở các triển lãm mỹ thuật châu Âu. Chất giấy mỹ thuật Cotton 310gsm sờ xốp mịn tự nhiên, cầm lên tay mang lại cảm giác đầm chắc và vô cùng sang trọng.”
             </p>
           </div>
         </div>
