@@ -207,4 +207,4 @@ export const MEMORY_POSTS: MemoryPost[] = [
 ];
 
 export const BRAND_LOGO_URL = 'https://lh3.googleusercontent.com/aida/AEtjO1WZRQDG9ZPkq0Y0getKNy_q0SZPBBpg3s_hc8BZ8u6sofVkKPTVy5bIzrF-cSgT5jzKwuck7xjuvVqbe3kb1NawJlHFpaClRzKF6TtuKm8XVpOspE0dVnnmzscjX-BKFaxCSYjqpFJ6hePqmwvynlAw1RRTHnegdsYsRsm3eoNDQXs7qbEWhHqjEUp3_c54DWJP2fDwSfRiLunYpmGnwkglhj17szWUwyyx-o-YS63TqVQMahIGkqW_CQ';
-export const USER_AVATAR_URL = 'https://lh3.googleusercontent.com/aida/AEtjO1XIaJ7YWEYvnDtL6BfZAydnHZ_7LAw2yP6rdwJh3fLwG8hFmtYV80rOZa2LPN42TwX4ioBeRvp3ok9xMZ92-yMXgKlf-d_c1atQl6lXTvAe4hXtJTBYY3CYzdzoz8LpS_vPby8BhvLexRQFfXjgu-IBk0wDPqN1oHdqFhPouW1cMnWg2il1YT5OYcA2_o9fSulcn7Sc3ujRuZ6qOsmtqnDyKIqEa1njqW5O23ar7X4hzKiUGVOTgf4F8fw';
+export const USER_AVATAR_URL = '/src/assets/images/customer_avatar_1788517244170.jpg';

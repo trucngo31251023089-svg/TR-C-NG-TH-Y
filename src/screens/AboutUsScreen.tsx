@@ -118,20 +118,13 @@ export const AboutUsScreen: React.FC<AboutUsScreenProps> = ({ onNavigate }) => {
         {/* Atelier Locations & Contact */}
         <div className="bg-surface-container-lowest p-8 rounded-3xl border border-white/10 space-y-6 text-center">
           <span className="font-mono text-xs text-secondary tracking-widest uppercase">
-            HỆ THỐNG XƯỞNG CHẾ TÁC & TRƯNG BÀY
+            XƯỞNG CHẾ TÁC & TRƯNG BÀY
           </span>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-left">
-            <div className="p-4 rounded-xl bg-surface-container border border-white/5 space-y-2">
-              <div className="font-serif text-primary font-medium text-sm">Saigon Atelier</div>
+          <div className="max-w-md mx-auto text-left">
+            <div className="p-5 rounded-xl bg-surface-container border border-white/5 space-y-2">
+              <div className="font-serif text-primary font-medium text-base">Xưởng In & Chế Tác LumiCal Saigon</div>
               <div className="text-xs text-on-surface-variant font-mono">Thảo Điền, TP. Thủ Đức, TP. Hồ Chí Minh</div>
-            </div>
-            <div className="p-4 rounded-xl bg-surface-container border border-white/5 space-y-2">
-              <div className="font-serif text-primary font-medium text-sm">Tokyo Studio</div>
-              <div className="text-xs text-on-surface-variant font-mono">Minato-ku, Tokyo, Japan</div>
-            </div>
-            <div className="p-4 rounded-xl bg-surface-container border border-white/5 space-y-2">
-              <div className="font-serif text-primary font-medium text-sm">Paris Maison</div>
-              <div className="text-xs text-on-surface-variant font-mono">Rue Saint-Honoré, 75001 Paris, France</div>
+              <div className="text-[11px] text-secondary font-mono pt-1">✦ Xưởng thủ công trực tiếp gia công lịch mỹ thuật & tích hợp WebAR tại Việt Nam.</div>
             </div>
           </div>
           <div className="pt-4 flex justify-center">

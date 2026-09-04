@@ -276,21 +276,6 @@ export const CheckoutScreen: React.FC<CheckoutScreenProps> = ({ onNavigate }) =>
                     </div>
 
                     <div className="flex items-center gap-2">
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setTempBankBin(bankAccount.bin);
-                          setTempAccountNo(bankAccount.accountNumber);
-                          setTempAccountName(bankAccount.accountName);
-                          setShowBankConfigModal(true);
-                        }}
-                        className="px-2.5 py-1.5 rounded bg-surface-container-high hover:bg-surface-bright border border-white/10 text-secondary text-xs font-mono flex items-center gap-1 transition-colors"
-                        title="Đổi sang tài khoản ngân hàng thật của bạn"
-                      >
-                        <span className="material-symbols-outlined text-sm">settings</span>
-                        <span>Đổi STK Nhận</span>
-                      </button>
-
                       <div className="flex items-center gap-1.5 px-3 py-1.5 rounded bg-amber-950/80 border border-amber-500/30 text-amber-200 font-mono text-xs">
                         <span className="material-symbols-outlined text-sm">schedule</span>
                         <span>Giữ đơn: {formatTimer(timeLeft)}</span>
